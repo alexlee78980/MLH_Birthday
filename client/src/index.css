@@ -8,11 +8,21 @@ body {
   font-size: 18px;
 }
 
+.card{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
+.Button:disabled,
+.Button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 h1 {
   position: absolute;
   top: 1rem;
