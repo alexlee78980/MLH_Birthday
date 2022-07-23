@@ -6,6 +6,8 @@ import mapStyles from './mapStyles'
 import Button from '../src/components/others/Button'
 import ZoomPostModal from './components/Modals/ZoomPostModal';
 import PostModal from './components/Modals/PostModal'
+import usePlacesAutocomplete, {getGeocode, getLatLng} from "use-places-autocomplete"
+
 import {
   GoogleMap,
   useLoadScript,
@@ -136,7 +138,7 @@ function App() {
           }}
         key={`${marker.lat}-${marker.lng}`} position={{lat: marker.lat, lng: marker.lng}} />)}
         {selected && <InfoWindow position={{lat:selected.lat, lng: selected.lng}} onCloseClick={setSelectedNullHandler}><div>
-          <h3>{selected.name} Birthday 🎈</h3>
+          <h3>{selected.name}'s' Birthday 🎈</h3>
           <Button onClick={zoomHandler}>Show Post</Button>
         </div></InfoWindow>}
         </GoogleMap>
