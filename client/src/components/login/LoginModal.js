@@ -17,7 +17,7 @@ const LoginModal = (props) =>{
     }
     return (<Modal>
         <Button onClick={loginHandler}>Login</Button> <Button onClick={signUpHandler}>Sign Up </Button> <Button onClick={closeHandler}>Close</Button> 
-        {login ? <Login></Login>: <SignUp></SignUp>}
+        {login ? <Login onClose={closeHandler}></Login>: <SignUp onClose={closeHandler}></SignUp>}
         
     
     </Modal>)

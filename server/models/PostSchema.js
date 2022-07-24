@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-const PostSchema = {
+const PostSchema = mongoose.Schema({
     caption: {
       type: String,
       required: true
@@ -10,9 +10,8 @@ const PostSchema = {
       required: true
     },
     comments: [{
-        user: {type: mongoose.Types.ObjectId, required: true, ref: 'User'},
-        text: {type: String, required: true},
-        date: {type: String, required: true},
+        name:{type: String, required: true},
+        comment: {type: String, required: true},
         time: {type: String, required: true},
     }],
     lng: {
@@ -23,5 +22,5 @@ const PostSchema = {
       type: Number,
       required: true
     }
-  }
+  }, { timestamps: true })
   export default mongoose.model('Post', PostSchema);
