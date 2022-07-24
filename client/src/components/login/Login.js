@@ -4,6 +4,7 @@ import { useForm } from "../hooks/form-hook";
 import Input from "../post/Input";
 import { VALIDATOR_REQUIRE } from "../../util/validators";
 import { useContext } from "react";
+import ErrorModal from "../error/ErrorModal";
 import { AuthContext } from "../../context/auth-context";
 const Login = (props) => {
     const auth = useContext(AuthContext)
@@ -37,6 +38,7 @@ const Login = (props) => {
 
 return (
     <div>
+    {error && <ErrorModal error={error} onClear={clearError}></ErrorModal>}
         <form className="place-form" onSubmit={LoginHandler}>
             <Input
                 id="email"

@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { useForm } from "../hooks/form-hook";
 import Button from "../others/Button";
 import Input from "../post/Input";
+import ErrorModal from "../error/ErrorModal";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
@@ -54,6 +55,7 @@ const GenerateModal = (props) =>{
         props.onClose()
       }
     return (<Modal>
+    {error && <ErrorModal error={error} onClear={clearError}></ErrorModal>}
     <form className="place-form" onSubmit={postSubmitHandler}>
     <div>
     <ImageUpload id="image"
@@ -63,7 +65,7 @@ const GenerateModal = (props) =>{
           element="input"
           label="caption"
           validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a valid comment"
+          errorText="Please enter a valid caption"
           onInput={inputHandler}
         />
     </div>

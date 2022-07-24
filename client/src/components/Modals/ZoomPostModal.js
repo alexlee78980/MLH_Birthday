@@ -8,6 +8,7 @@ import { VALIDATOR_REQUIRE } from "../../util/validators";
 import { useForm } from "../hooks/form-hook";
 import { AuthContext } from "../../context/auth-context";
 import { useHttpClient } from "../hooks/http-hook";
+import ErrorModal from "../error/ErrorModal";
 
 const ZoomPostModal = (props)=>{
     const auth = useContext(AuthContext)
@@ -61,6 +62,7 @@ const ZoomPostModal = (props)=>{
     }
 
     return (<Modal>
+    {error && <ErrorModal error={error} onClear={clearError}></ErrorModal>}
     <div><img className="post" src={`${process.env.REACT_APP_BACKEND_URL2}/${post.image}`} alt="img not found"></img></div>
         <h5>{post.caption}</h5>
         <Button onClick={commentsHandler}>{showComments ? 'Hide Comments':'Show Comments'}</Button>

@@ -6,6 +6,7 @@ import mapStyles from './mapStyles'
 import { AuthContext } from './context/auth-context';
 import Button from '../src/components/others/Button'
 import ZoomPostModal from './components/Modals/ZoomPostModal';
+import ErrorModal from './components/error/ErrorModal'
 import PostModal from './components/Modals/PostModal'
 import usePlacesAutocomplete, {getGeocode, getLatLng} from "use-places-autocomplete"
 
@@ -155,6 +156,7 @@ function App() {
   }
   return (
     <AuthContext.Provider value={{isLoggedIn: uid, loginFunction: loginFunction, uid, email, name, birthday, loginPopup: loginHandler}}>
+    {error && <ErrorModal error={error} onClear={clearError}></ErrorModal>}
       {showModal && <PostModal reload={getallPosts} onClose={close}></PostModal>}
       {generatePost && <GenerateModal onClose={close} reload={getallPosts}/>}
       {showLogin && <LoginModal onClose={close}></LoginModal>}

@@ -4,6 +4,7 @@ import { VALIDATOR_REQUIRE } from "../../util/validators";
 import { useForm } from "../hooks/form-hook";
 import { useHttpClient } from "../hooks/http-hook";
 import { useContext } from "react";
+import ErrorModal from "../error/ErrorModal";
 import { AuthContext } from "../../context/auth-context";
 
 const SignUp = (props) => {
@@ -49,6 +50,7 @@ const SignUp = (props) => {
 
 return (
     <div>
+    {error && <ErrorModal error={error} onClear={clearError}></ErrorModal>}
         <form className="place-form" onSubmit={signUpHandler}>
             <Input
                 id="name"

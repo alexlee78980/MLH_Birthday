@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { useForm } from "../hooks/form-hook";
 import Button from "../others/Button";
 import Input from "../post/Input";
+import ErrorModal from "../error/ErrorModal";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
@@ -59,6 +60,7 @@ const PostModal = (props) =>{
         props.onClose()
       }
     return (<Modal>
+    {error && <ErrorModal error={error} onClear={clearError}></ErrorModal>}
     <form className="place-form" onSubmit={postSubmitHandler}>
     <div>
     <ImageUpload id="image"
